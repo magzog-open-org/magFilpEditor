@@ -1,6 +1,6 @@
 {
   "name": "magflipeditor",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "This project is to build a book editor for the project 'magFlip'.",
   "main": "index.js",
   "scripts": {
