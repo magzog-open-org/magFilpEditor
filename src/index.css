@@ -1,0 +1,10 @@
+html, body { margin: 0; padding: 0; }
+:root {
+  --canvas-width: 100vw;
+  --canvas-height: 100vh;
+}
+
+#magCanvas {
+  width: var(--canvas-width);
+  height: var(--canvas-height);
+}
