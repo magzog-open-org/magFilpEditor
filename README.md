@@ -4,7 +4,7 @@ The MagFlipEditor project is an extension of the MagFlip project, aiming to buil
 Below are the implementation details and requirements for the editor:
 
 [ 19th, Oct, 2024 ]
-- [ ] Node hierarchy follows this structure: Canvas > Layer > Group > Element
+- [X] Node hierarchy follows this structure: Canvas > Layer > Group > Block
 - [ ] Each object will have a unique z-index.
 - [ ] Events will be integrated, including flip-related events such as flipStart, flipping(%), flipEnd, turnback, and turnbackend.
 - [ ] Create a HitCanvas and assign a unique color value to each object to identify which element triggered an event.
