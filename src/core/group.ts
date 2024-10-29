@@ -1,8 +1,8 @@
 import { DrawableConfig, IDrawable, IDrawableConfig } from "./drawable";
 import { TComponent } from "./component";
-import { OffScreenCanvas } from "./canvasContext";
+import { OffScreenCanvas } from "./offScreenCanvas";
 import { Default } from "src/common/defaults";
-import { EventListener } from "src/common/eventListener";
+import { Base } from "./base";
 
 export interface IGroupConfig extends IDrawableConfig { }
 
@@ -12,7 +12,7 @@ export class GroupConfig<T> extends DrawableConfig<T> implements IGroupConfig {
   }
 }
 
-export class Group extends EventListener implements IDrawable {
+export class Group extends Base implements IDrawable {
   children: TComponent[] = [];
   offScreenCanvas: OffScreenCanvas;
   config: GroupConfig<IGroupConfig>;

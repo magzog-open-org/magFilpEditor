@@ -2,10 +2,9 @@ import { CanvasContext } from './canvasContext';
 import { CanvasElement } from './canvasElement';
 import { Layer } from './layer';
 import { LayerManager } from '../layerManager';
-import { EventListener } from 'src/common/eventListener';
-import { Position, Size } from 'src/common/types';
+import { Base } from './base';
 
-export class Canvas extends EventListener {
+export class Canvas extends Base {
   private element: CanvasElement;
   private context: CanvasContext;
   private layerManager: LayerManager;

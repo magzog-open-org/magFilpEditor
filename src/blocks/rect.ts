@@ -1,8 +1,9 @@
 import { Block, BlockConfig, IBlockConfig } from "src/core/block";
 import { Position, Size } from "src/common/types";
 import { Default } from "src/common/defaults";
-import { OffScreenCanvas } from "src/core/canvasContext";
+import { OffScreenCanvas } from "src/core/offScreenCanvas";
 import { IDrawable } from "src/core/drawable";
+import { IEventListener } from "src/common/eventListener";
 
 export interface IRectConfig extends IBlockConfig {
   // TODO: add more properties for Rect block
@@ -14,7 +15,7 @@ export class RectConfig<T> extends BlockConfig<T> implements IRectConfig {
   }
 }
 
-export class Rect extends Block implements IDrawable{
+export class Rect extends Block {
   config: RectConfig<IRectConfig>;
   offScreenCanvas: OffScreenCanvas;
   

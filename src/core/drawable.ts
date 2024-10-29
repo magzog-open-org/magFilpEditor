@@ -1,15 +1,11 @@
 
-import { OffScreenCanvas } from "./canvasContext";
+import { OffScreenCanvas } from "./offScreenCanvas";
 import { Position, Size } from "../common/types";
 import { Default } from "src/common/defaults";
-import { EventListener } from "src/common/eventListener";
-import { ITextConfig } from "src/config/textConfig";
 import { FillConfig, IFillConfig } from "src/config/fillConfig";
 import { BorderConfig, IBorderConfig } from "src/config/borderConfig";
-import { Canvas } from "./canvas";
-import { Config, IConfig } from "src/config/config";
+import { Config } from "src/config/config";
 import { Validator } from "src/common/validation";
-import { HtmlHelper } from "src/common/helpers";
 
 export interface IDrawableConfig {
   position: Position;

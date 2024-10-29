@@ -1,8 +1,8 @@
 import { DrawableConfig, IDrawable, IDrawableConfig } from "./drawable";
 import { ITextConfig, TextConfig } from "../config/textConfig";
 import { IConfig } from "src/config/config";
-import { EventListener } from "src/common/eventListener";
-import { OffScreenCanvas } from "./canvasContext";
+import { OffScreenCanvas } from "./offScreenCanvas";
+import { Base } from "./base";
 
 export interface IBlockConfig extends IDrawableConfig {
   text?: ITextConfig;
@@ -19,7 +19,7 @@ export class BlockConfig<T> extends DrawableConfig<T> implements IBlockConfig, I
   }
 }
 
-export abstract class Block extends EventListener implements IDrawable {
+export abstract class Block extends Base implements IDrawable {
   offScreenCanvas: OffScreenCanvas;
 
   constructor(config?: IBlockConfig) {
