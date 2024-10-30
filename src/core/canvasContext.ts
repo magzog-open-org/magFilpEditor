@@ -3,16 +3,11 @@ import { HtmlHelper } from "../common/helpers";
 import { IDrawableConfig } from "./drawable";
 
 export class CanvasContext {
-  private canvasEl: HTMLCanvasElement;
-  context: CanvasRenderingContext2D;
+  private context: CanvasRenderingContext2D;
 
-  constructor(canvasElement: HTMLCanvasElement) {
-    const context = canvasElement.getContext("2d");
-    if (!context) {
-      throw new Error("Failed to get 2D context");
-    }
+  constructor(context: CanvasRenderingContext2D) {
+    if (!context) { throw new Error("Failed to get 2D context"); }
     this.context = context;
-    this.canvasEl = canvasElement;
   }
 
   get ctx(): CanvasRenderingContext2D {
@@ -22,9 +17,7 @@ export class CanvasContext {
   save(): void { this.context.save(); }
   restore(): void { this.context.restore(); }
 
-  clear(width: number, height: number): void {
-    this.context.clearRect(0, 0, width, height);
-  }
+  clear(width: number, height: number): void { this.context.clearRect(0, 0, width, height); }
 }
 
 // export class SceneContext extends CanvasContext {

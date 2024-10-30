@@ -7,6 +7,7 @@ export class OffScreenCanvas {
   context: CanvasRenderingContext2D;
   constructor(config?: IDrawableConfig) {
     const size = config?.size || Default.config.size;
-    ({ el: this.element, context: this.context } = HtmlHelper.createCanvasEl(size));
+    this.element = HtmlHelper.createCanvasEl(size);
+    this.context = this.element.getContext('2d') as CanvasRenderingContext2D;
   }
 }

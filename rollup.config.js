@@ -33,7 +33,7 @@ export default [
       }),
       copy({
         targets: [
-          { src: 'src/index.html', dest: 'dist' }, // Copy HTML to dist
+          { src: 'docs/examples/index.html', dest: 'dist' }, // Copy HTML to dist
         ],
       }),
       serve({

@@ -1,12 +1,37 @@
 import { Position, Size } from "./types";
+import { Validator } from "./validation";
 
 export class HtmlHelper {
-  static createCanvasEl(size: Size): { el: HTMLCanvasElement, context: CanvasRenderingContext2D } {
-    const canvas = document.createElement('canvas');
-    canvas.width = size.width;
-    canvas.height = size.height;
-    return { el: canvas, context: canvas.getContext('2d') as CanvasRenderingContext2D };
+  static createCanvasEl(): HTMLCanvasElement;
+  static createCanvasEl(id: string): HTMLCanvasElement;
+  static createCanvasEl(size: Size): HTMLCanvasElement;
+  static createCanvasEl(id: string, size: Size): HTMLCanvasElement;
+  static createCanvasEl(idOrSize?: string | Size, size?: Size): HTMLCanvasElement {
+    let canvasEl:HTMLCanvasElement = document.createElement('canvas');
+    if(size == undefined){
+      if(idOrSize == undefined){
+        // canvasEl = document.createElement('canvas');
+        canvasEl.width = window.innerWidth;
+        canvasEl.height = window.innerHeight;
+      }
+      else if (typeof idOrSize === 'string') {
+        canvasEl = document.getElementById(idOrSize) as HTMLCanvasElement;
+        canvasEl.width = window.innerWidth;
+        canvasEl.height = window.innerHeight;
+      } else if (Validator.size(idOrSize)) {
+        // canvasEl = document.createElement('canvas');
+        canvasEl.width = idOrSize?.width;
+        canvasEl.height = idOrSize?.height;
+      }
+    } else if (typeof idOrSize === 'string' && Validator.size(size)) {
+      canvasEl = document.getElementById(idOrSize) as HTMLCanvasElement;
+      canvasEl.width = size?.width;
+      canvasEl.height = size?.height;
+    }
+
+    return canvasEl;
   }
+
   static createImageEl(): HTMLImageElement { return document.createElement('img'); }
   static getWindowCenter = (): Position => ({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
   static getWindowSize = (): Size => ({ width: window.innerWidth, height: window.innerHeight });

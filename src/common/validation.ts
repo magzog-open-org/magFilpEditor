@@ -48,6 +48,10 @@ export class Validator {
   }
   // TODO: implement.
   static size(size: Size): Size {
-    return size;
+    if(size && typeof size.width === 'number' && typeof size.height === 'number'){
+      return size;
+    }
+    
+    throw Error('Invalid size: width and height must be numbers')
   }
 }
