@@ -8,5 +8,10 @@ export type Size = {
   height: number;
 };
 
+export enum BorderStyle {
+  SOLID = "solid",
+  DASHED = "dashed",
+}
+
 export type AlignVertical = 'top' | 'middle' | 'bottom';
 export type AlignHorizontal = 'left' | 'center' | 'right';

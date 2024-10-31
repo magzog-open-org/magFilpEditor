@@ -1,4 +1,4 @@
-import { Validator } from "src/common/validation";
+import { Validator } from "src/common/validator";
 import { Config } from "./config";
 import { Default } from "src/common/defaults";
 

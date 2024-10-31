@@ -1,4 +1,4 @@
-import { DrawableConfig, IDrawableConfig } from "../core/drawable";
+import { DrawableConfig, IDrawableConfig } from "./drawableConfig";
 
 export interface IGroupConfig extends IDrawableConfig { }
 

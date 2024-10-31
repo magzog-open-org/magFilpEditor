@@ -1,6 +1,6 @@
 import { Default } from "src/common/defaults";
 import { Config, IConfig } from "./config";
-import { Validator } from "src/common/validation";
+import { Validator } from "src/common/validator";
 import { AlignHorizontal, AlignVertical } from "src/common/types";
 
 export interface ITextConfig {

@@ -1,5 +1,4 @@
-import { BorderStyle } from "src/config/borderConfig";
-import { AlignHorizontal, AlignVertical } from "src/common/types";
+import { AlignHorizontal, AlignVertical, BorderStyle } from "src/common/types";
 import { Position, Size } from "./types";
 
 export class Validator {

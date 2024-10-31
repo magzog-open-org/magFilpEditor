@@ -1,6 +1,6 @@
-import { DrawableConfig, IDrawableConfig } from "../core/drawable";
 import { ITextConfig, TextConfig } from "../config/textConfig";
 import { IConfig } from "src/config/config";
+import { DrawableConfig, IDrawableConfig } from "./drawableConfig";
 
 export interface IBlockConfig extends IDrawableConfig {
   text?: ITextConfig;

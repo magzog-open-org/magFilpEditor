@@ -1,17 +1,13 @@
-import { Validator } from "src/common/validation";
-import { Config, IConfig } from "./config";
+import { Validator } from "src/common/validator";
+import { Config } from "./config";
 import { Default } from "src/common/defaults";
+import { BorderStyle } from "src/common/types";
 
 export interface IBorderConfig {
   style?: BorderStyle;
   opacity?: number;
   thickness?: number;
   color?: string;
-}
-
-export enum BorderStyle {
-  SOLID = "solid",
-  DASHED = "dashed",
 }
 
 export class BorderConfig<T> extends Config<T> implements IBorderConfig {

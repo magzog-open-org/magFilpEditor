@@ -1,4 +1,4 @@
-import { BorderStyle } from "src/config/borderConfig";
+import { BorderStyle } from "./types";
 
 export const Default = {
   config: {

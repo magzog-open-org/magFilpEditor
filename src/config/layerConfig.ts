@@ -1,13 +1,12 @@
-import { DrawableConfig, IDrawableConfig } from "../core/drawable";
-import { ITextConfig, TextConfig } from "../config/textConfig";
+import { DrawableConfig, IDrawableConfig } from "./drawableConfig";
+import { ITextConfig, TextConfig } from "./textConfig";
 import { HtmlHelper } from "src/common/helpers";
-import { IConfig } from "src/config/config";
 
 export interface ILayerConfig extends IDrawableConfig {
   title?: ITextConfig;
 }
 
-export class LayerConfig<T> extends DrawableConfig<T> implements ILayerConfig, IConfig {
+export class LayerConfig<T> extends DrawableConfig<T> implements ILayerConfig {
   private _title: ITextConfig = new TextConfig();
   get title(): ITextConfig { return this._title; }
   set title(text: ITextConfig) { this._title = new TextConfig(text); }
@@ -16,9 +15,8 @@ export class LayerConfig<T> extends DrawableConfig<T> implements ILayerConfig, I
     // Init
     if(config){ 
       config.position = { x: 0, y: 0 };
-      config.size = HtmlHelper.getWindowSize(); 
-    }
-    else { 
+      config.size = HtmlHelper.getWindowSize();
+    } else { 
       config = {
         position: { x: 0, y: 0 }, 
         size: HtmlHelper.getWindowSize()

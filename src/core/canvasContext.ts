@@ -1,6 +1,3 @@
-import { Default } from "src/common/defaults";
-import { HtmlHelper } from "../common/helpers";
-import { IDrawableConfig } from "./drawable";
 
 export class CanvasContext {
   private context: CanvasRenderingContext2D;

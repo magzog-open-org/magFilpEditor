@@ -2,6 +2,8 @@ import { BlockConfig, IBlockConfig } from "src/config/blockConfig";
 import { OffScreenCanvas } from "src/core/offScreenCanvas";
 import { IDrawable } from "src/core/drawable";
 import { Block } from "src/core/block";
+import { SceneCanvas } from "src/core/sceneCanvas";
+import { HitCanvas } from "src/core/hitCanvas";
 
 export interface IRectConfig extends IBlockConfig {
   // TODO: add more properties for Rect block
@@ -21,8 +23,8 @@ export class Rect extends Block implements IDrawable {
   constructor(config?: IRectConfig) {
     super(config);
     this.config = new RectConfig<IRectConfig>(config);
-    this.offScreenCanvas = new OffScreenCanvas(this.config);
-    this.offScreenHitCanvas = new OffScreenCanvas(this.config);
+    this.offScreenCanvas = new OffScreenCanvas(SceneCanvas.canvas.getContext(), this.config);
+    this.offScreenHitCanvas = new OffScreenCanvas(HitCanvas.canvas.getContext(), this.config);
     this.drawOffScreenCanvas();
     this.drawOffScreenHitCanvas();
   }

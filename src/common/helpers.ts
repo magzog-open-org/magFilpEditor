@@ -1,5 +1,5 @@
 import { Position, Size } from "./types";
-import { Validator } from "./validation";
+import { Validator } from "./validator";
 
 export class HtmlHelper {
   static createCanvasEl(): HTMLCanvasElement;

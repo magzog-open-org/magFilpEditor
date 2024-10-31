@@ -6,33 +6,50 @@ import { ILayerConfig, LayerConfig } from "src/config/layerConfig";
 
 export class Layer extends Base implements IDrawable {
   private children: TComponent[] = [];
+  sceneContext: CanvasRenderingContext2D;
+  hitContext: CanvasRenderingContext2D;
   offScreenCanvas: OffScreenCanvas;
   offScreenHitCanvas: OffScreenCanvas;
   config: LayerConfig<ILayerConfig>;
 
-  constructor(config?: ILayerConfig) {
+  constructor(
+    sceneContext: CanvasRenderingContext2D, 
+    hitContext: CanvasRenderingContext2D, 
+    config?: ILayerConfig
+  ) {
     super();
     this.config = new LayerConfig<ILayerConfig>(config);
-    this.offScreenCanvas = new OffScreenCanvas(this.config);
-    this.offScreenHitCanvas = new OffScreenCanvas(this.config);
+    this.sceneContext = sceneContext;
+    this.hitContext = hitContext;
+    this.offScreenCanvas = new OffScreenCanvas(sceneContext, this.config);
+    this.offScreenHitCanvas = new OffScreenCanvas(hitContext, this.config);
+    this.setEvents();
+  }
+
+  private setEvents(): void {
+    // this.addListener("addBlock", () => {  });
   }
 
   addBlock(child: TComponent): void {
     this.children.push(child);
+    this.drawOffScreenCanvas();
+    this.draw(this.sceneContext);
+    this.drawOffScreenHitCanvas();
+    this.drawHit(this.hitContext);
   }
 
   drawOffScreenCanvas(): void {
-    this.offScreenCanvas.context.fillStyle = this.config.fill.color!;
-    this.offScreenCanvas.context.strokeStyle = this.config.border.color!;
-    this.offScreenCanvas.context.lineWidth = this.config.border.thickness!;
+    this.offScreenCanvas.context.fillStyle = 'rgba(255, 255, 255, 0)';
+    this.offScreenCanvas.context.strokeStyle = 'rgba(255, 255, 255, 0)';
+    this.offScreenCanvas.context.lineWidth = 0;
     this.offScreenCanvas.context.fillRect(0, 0, this.config.size.width, this.config.size.height);
   }
 
   drawOffScreenHitCanvas(): void {
-    this.offScreenCanvas.context.fillStyle = this.config.hitColor;
-    this.offScreenCanvas.context.strokeStyle = this.config.hitColor;
-    this.offScreenCanvas.context.lineWidth = this.config.border.thickness!;
-    this.offScreenCanvas.context.fillRect(0, 0, this.config.size.width, this.config.size.height);
+    this.offScreenHitCanvas.context.fillStyle = this.config.hitColor;
+    this.offScreenHitCanvas.context.strokeStyle = this.config.hitColor;
+    this.offScreenHitCanvas.context.lineWidth = 0;
+    this.offScreenHitCanvas.context.fillRect(0, 0, this.config.size.width, this.config.size.height);
   }
 
   draw(context: CanvasRenderingContext2D): void {
